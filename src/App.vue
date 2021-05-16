@@ -20,7 +20,10 @@
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Home</v-toolbar-title>
+      <v-toolbar-title>Home</v-toolbar-title> <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat v-bind:to="{ name: 'AddMovie' }">Add Movie</v-btn>
+      </v-toolbar-items>
     </v-toolbar>
     <v-content>
       <v-container fluid>
@@ -33,9 +36,8 @@
   </v-app>
 </template>
 
-
 <script>
-import './assets/stylesheets/main.css';
+import "./assets/stylesheets/main.css";
 
 export default { data: () => ({ drawer: null }), props: { source: String } };
 </script>
