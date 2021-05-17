@@ -10,12 +10,15 @@
             >
           </div>
         </v-card-title>
-        <h6 class="card-title" v-if="current_user" @click="rate">Rate this movie</h6>
+        <h6 class="card-title" @click="rate">
+          Rate this movie
+        </h6>
         <v-card-text> {{ movie.description }} </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
-</template> <script>
+</template> 
+<script>
 import axios from "axios";
 import Vue from "vue";
 import StarRating from "vue-star-rating";
