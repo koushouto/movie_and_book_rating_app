@@ -1,4 +1,4 @@
-# movie_rating_app
+# movie_and_book_rating_app
 
 > A movie and book rating app
 
