@@ -19,7 +19,7 @@ module.exports.controller = app => {
   });
 
   // fetch a single movie
-  app.get("/api/movies/:id", (req, res) => {
+  app.get("/movies/:id", (req, res) => {
     MovieSchema.findById(
       req.params.id,
       "name description release_year genre",
@@ -33,7 +33,7 @@ module.exports.controller = app => {
   });
 
   // rate a movie
-  app.post("/movies/rate/:id", (req, res) => {
+  app.post("/movies/movierating/:id", (req, res) => {
     const rating = new Rating({
       movie_id: req.params.id,
       user_id: req.body.user_id,

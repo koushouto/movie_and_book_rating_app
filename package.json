@@ -1,7 +1,7 @@
 {
-  "name": "movie_rating_app",
+  "name": "movie_and_book_rating_app",
   "version": "1.0.0",
-  "description": "A movie rating app",
+  "description": "A movie and book rating app",
   "author": "kalir <koushouto@gmail.com>",
   "private": true,
   "scripts": {
@@ -35,7 +35,7 @@
     "vue-router": "^3.0.1",
     "vue-star-rating": "^1.7.0",
     "vue-swal": "^1.0.0",
-    "vuetify": "^1.5.24"
+    "vuetify": "^2.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

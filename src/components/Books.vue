@@ -1,34 +1,51 @@
 <template>
-  <div class="home" style="padding-bottom:72px">
-    <v-sheet tile color="grey darken-4" dark>
+  <div class="books" style="padding-bottom: 72px">
+    <v-sheet tile color="red  darken-1" dark>
       <v-responsive>
-        <v-img
-          src="https://picsum.photos/1920/1080?random"
-          gradient="to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62)"
-        >
-          <v-container class="px-4" fill-height style="padding: 96px 0px">
-            <v-row class="pb-12" align="center">
-              <v-col cols="12" md="5">
-                <h1 class="font-weight-bold">
-                  Movie and Book
-                  <v-spacer></v-spacer>
-                  rating app
-                </h1>
-                <v-divider class="mb-3"></v-divider>
-                <p>
-                  Write a recommendation for your favorite book or movie, give
-                  your score and share it with your friends.
-                </p>
-                <v-btn dark large color="red" to="/users/login"  v-if="!current_user">Sign in</v-btn>
-                <v-btn dark large color="grey" to="/users/register" v-if="!current_user">Sign up</v-btn>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-img>
+        <v-container class="px-4" fill-height style="padding: 96px 0px">
+          <v-row>
+          <v-sheet class="mx-auto" elevation="10" color="grey lighten-5">
+            <v-slide-group
+            light
+              v-model="model"
+              class="pa-4"
+              center-active
+              show-arrows
+            >
+              <v-slide-item
+                v-for="n in 15"
+                :key="n"
+                v-slot="{ active, toggle }"
+              >
+                <v-img
+                  :src="imgs[n]"
+                  
+                  class="ma-4"
+                  height="200"
+                  width="130"
+                  @click="toggle"
+                >
+                  <v-row class="fill-height" align="center" justify="center">
+                    <v-scale-transition>
+                      <v-icon
+                        v-if="active"
+                        color="red"
+                        size="48"
+                        v-text="'mdi-check'"
+                      ></v-icon>
+                    </v-scale-transition>
+                  </v-row>
+                </v-img>
+              </v-slide-item>
+            </v-slide-group>
+          </v-sheet>
+          </v-row>
+        </v-container>
       </v-responsive>
     </v-sheet>
 
     <v-card
+      
       class="mx-auto py-6 mb-2"
       light
       elevation="24"
@@ -109,8 +126,26 @@
 
 <script>
 export default {
-  props:{
-    'current_user':Object,
-  }
-}
+  data: () => ({
+    model: null,
+    imgs: [
+        "https://picsum.photos/1920/1080?random=1",
+        "https://picsum.photos/1920/1080?random=2",
+        "https://picsum.photos/1920/1080?random=3",
+        "https://picsum.photos/1920/1080?random=4",
+        "https://picsum.photos/1920/1080?random=5",
+        "https://picsum.photos/1920/1080?random=6",
+        "https://picsum.photos/1920/1080?random=7",
+        "https://picsum.photos/1920/1080?random=8",
+        "https://picsum.photos/1920/1080?random=9",
+        "https://picsum.photos/1920/1080?random=10",
+        "https://picsum.photos/1920/1080?random=11",
+        "https://picsum.photos/1920/1080?random=12",
+        "https://picsum.photos/1920/1080?random=13",
+        "https://picsum.photos/1920/1080?random=14",
+        "https://picsum.photos/1920/1080?random=15",
+        "https://picsum.photos/1920/1080?random=16",
+      ],
+  }),
+};
 </script>

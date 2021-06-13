@@ -1,37 +1,56 @@
 <template>
-  <v-form v-model="valid" ref="form" lazy-validation>
-    <v-text-field
-      label="Movie Name"
-      v-model="name"
-      :rules="nameRules"
-      required
-    ></v-text-field>
+  <div class="login" style="padding-bottom: 72px">
+    <v-sheet tile color="grey darken-4" dark>
+      <v-responsive>
+        <v-img
+          src="https://picsum.photos/1920/1080?random"
+          gradient="to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62)"
+        >
+          <v-container class="px-4" fill-height style="padding: 96px 0px">
+            <v-row>
+              <v-col>
+                <v-card color="transparent">
+                  <v-form v-model="valid" ref="form" lazy-validation>
+                    <v-text-field
+                      label="Movie Name"
+                      v-model="name"
+                      :rules="nameRules"
+                      required
+                    ></v-text-field>
 
-    <v-text-field
-      name="input-7-1"
-      label="Movie Description"
-      v-model="description"
-      multi-line
-    ></v-text-field>
+                    <v-text-field
+                      name="input-7-1"
+                      label="Movie Description"
+                      v-model="description"
+                      multi-line
+                    ></v-text-field>
 
-    <v-select
-      label="Movie Release Year"
-      v-model="release_year"
-      :items="years"
-      required
-      :rules="releaseRules"
-    ></v-select>
+                    <v-select
+                      label="Movie Release Year"
+                      v-model="release_year"
+                      :items="years"
+                      required
+                      :rules="releaseRules"
+                    ></v-select>
 
-    <v-text-field
-      label="Movie Genre"
-      v-model="genre"
-      requierd
-      :rules="genreRules"
-    ></v-text-field>
+                    <v-text-field
+                      label="Movie Genre"
+                      v-model="genre"
+                      requierd
+                      :rules="genreRules"
+                    ></v-text-field>
 
-    <v-btn @click="submit" :disabled="!valid"> submit </v-btn>
-    <v-btn @click="clear">clear</v-btn>
-  </v-form>
+                    <v-btn @click="submit" :disabled="!valid" color="grey" larg> submit </v-btn>
+                    <v-btn @click="clear" color="grey" larg>clear</v-btn>
+                  </v-form>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-img>
+      </v-responsive>
+    </v-sheet>
+  </div>
 </template>
 
 <script>
@@ -70,21 +89,12 @@ export default {
           headers: { "Content-Type": "application/json" },
         })
           .then(() => {
-            this.$swal(
-              'Great!',
-              'Movie added successfully!',
-              'success',
-            )
+            this.$swal("Great!", "Movie added successfully!", "success");
             this.$router.push({ name: "Home" });
             this.$refs.form.reset();
           })
           .catch(() => {
-            this.$swal(
-              'Oh oo!',
-              'Could not add the movie!',
-              'error',
-            )
-            
+            this.$swal("Oh oo!", "Could not add the movie!", "error");
           });
       }
       return true;

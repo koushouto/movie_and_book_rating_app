@@ -1,6 +1,6 @@
 # movie_rating_app
 
-> A movie rating app
+> A movie and book rating app
 
 ## Build Setup
 

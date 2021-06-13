@@ -5,21 +5,19 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import BootstrapVue from 'bootstrap-vue';
 
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import vuetify from './plugins/vuetify';
 import VueSwal from 'vue-swal'
 import App from './App';
 import router from './router';
 
 Vue.use(BootstrapVue);
-Vue.use(Vuetify);
 Vue.use(VueSwal);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
-  components: { App },
-  template: '<App/>',
-});
+  vuetify,
+  render: h => h(App)
+}).$mount('#app')
 

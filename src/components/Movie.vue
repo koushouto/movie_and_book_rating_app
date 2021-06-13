@@ -1,22 +1,52 @@
 <template>
-  <v-layout row wrap>
-    <v-flex xs4>
-      <v-card>
-        <v-card-title primary-title>
-          <div>
-            <div class="headline">{{ movie.name }}</div>
-            <span class="grey--text"
-              >{{ movie.release_year }} ‧ {{ movie.genre }}</span
-            >
-          </div>
-        </v-card-title>
-        <h6 class="card-title" @click="rate">
-          Rate this movie
-        </h6>
-        <v-card-text> {{ movie.description }} </v-card-text>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <div class="movie" style="padding-bottom: 72px">
+    <v-sheet tile color="red  darken-1" style="padding: 45px 0px">
+      <v-responsive>
+        <v-container class="px-4" fill-height>
+          <v-layout row>
+              <v-card class="mx-auto my-12">
+                <v-img
+                  class="my-4"
+                  height="250"
+                  src="https://picsum.photos/1920/1080?random=10"
+                ></v-img>
+
+                <v-card-title>
+                  <div>
+                    <div class="headline">{{ movie.name }}</div>
+                    <span class="grey--text"
+                      >{{ movie.release_year }} ‧ {{ movie.genre }}
+                    </span>
+                  </div>
+                </v-card-title>
+
+                <v-card-text>
+                  <v-row align="center" class="mx-0">
+                    <v-rating
+                      :value="4.5"
+                      color="amber"
+                      dense
+                      half-increments
+                      readonly
+                      size="14"
+                    ></v-rating>
+
+                    <div class="grey--text ms-4">4.5 (413)</div>
+                  </v-row>
+
+                  <v-card-text> {{ movie.description }} </v-card-text>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-btn class="card-title" @click="rate" color="red" dark>Rate this movie</v-btn>
+                </v-card-actions>
+              </v-card>
+            
+          </v-layout>
+        </v-container>
+      </v-responsive>
+    </v-sheet>
+  </div>
 </template> 
 <script>
 import axios from "axios";
@@ -38,7 +68,7 @@ const RatingComponent = Vue.extend({
   },
   template: `
   <div class="rating">
-    How was your experience getting help with this issues?
+    Please choose your rating!
     <star-rating v-model="rating" :show-rating="false"></star-rating>
   </div>`,
   components: { "star-rating": StarRating },
@@ -63,7 +93,7 @@ export default {
         return axios({
           method: "post",
           data: { rate: state.note },
-          url: `http://localhost:8081/movies/rate/${movieId}`,
+          url: `http://localhost:8081/movies/movierating/${movieId}`,
           headers: { "Content-Type": "application/json" },
         })
           .then(() => {
@@ -79,7 +109,7 @@ export default {
     async fetchMovie() {
       return axios({
         method: "get",
-        url: `http://localhost:8081/api/movies/${this.$route.params.id}`,
+        url: `http://localhost:8081/movies/${this.$route.params.id}`,
       })
         .then((response) => {
           this.movie = response.data;
