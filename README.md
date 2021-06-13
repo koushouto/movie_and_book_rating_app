@@ -157,7 +157,7 @@ vue2 + vue-router + vuetify + axios + express + MongoDB + Node
 
 6. 添加电影
 
-![addMovie](README.assets/addMovie.png)
+![AddMovie](README.assets/AddMovie.png)
 
 7. 注册登录
 
